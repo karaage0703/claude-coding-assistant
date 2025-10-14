@@ -26,7 +26,7 @@ Claude Codeでコードレビューを自動化するプラグインです。
 
 ### 4. テスト
 ```
-@code-reviewer.md PR#123をレビューしてください
+/coding-assistant:code-reviewer PR#123をレビューしてください
 ```
 
 ---
@@ -35,7 +35,7 @@ Claude Codeでコードレビューを自動化するプラグインです。
 
 ### コードレビュー
 ```
-@code-reviewer.md PR#<番号>をレビューしてください
+/coding-assistant:code-reviewer PR#<番号>をレビューしてください
 ```
 
 プラグインは以下の処理を自動実行：
