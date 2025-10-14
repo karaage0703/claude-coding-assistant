@@ -1,10 +1,12 @@
-# Claude Code プラグイン雛形
+# Claude Code コーディングアシスタント
 
-このリポジトリは Claude Code プラグインのスターターテンプレートです。
+Claude Codeでコードレビューを自動化するプラグインです。
 
 ## 特徴
-- **/hello** コマンドで日本語挨拶
-- GitHub経由で簡単にインストール・共有可能
+- **自動コードレビュー**: GitHub CLIを使用してPRを分析し、体系的なレビューを実行
+- **Codex連携**: Codex MCPサーバによるマルチエージェント検証で高品質なレビューを実現
+- **体系的分析**: PRテンプレートに基づく統一されたレビュー観点
+- **GitHub統合**: レビューコメントを直接GitHubに投稿
 
 ---
 
@@ -12,47 +14,91 @@
 
 ### 1. マーケットプレイスを追加
 ```
-/plugin marketplace add karaage0703/claude-plugin-template
+/plugin marketplace add karaage0703/claude-coding-assistant
 ```
 
 ### 2. プラグインをインストール
 ```
-/plugin install hello-plugin@karaage0703/claude-plugin-template
+/plugin install coding-assistant@karaage0703/claude-coding-assistant
 ```
 
 ### 3. Claude Code を再起動
 
 ### 4. テスト
 ```
-/hello
+@code-reviewer.md PR#123をレビューしてください
 ```
-→ 「こんにちは！」と返れば成功です 🎉
 
 ---
 
-## 📝 カスタマイズ
+## 📝 使い方
 
-このテンプレートをフォークして、独自のプラグインを作成できます：
+### コードレビュー
+```
+@code-reviewer.md PR#<番号>をレビューしてください
+```
 
-1. このリポジトリをフォーク
-2. `commands/` フォルダに新しいコマンドを追加
-3. `.claude-plugin/plugin.json` を編集
-4. チームメンバーにリポジトリURLを共有
+プラグインは以下の処理を自動実行：
+1. PR情報の取得と分析
+2. ファイル別の詳細レビュー
+3. Codexによる妥当性検証（オプション）
+4. GitHubへのコメント投稿
+5. レビューサマリーの作成
+
+### 前提条件
+- GitHub CLI（gh）がインストール・認証済みであること
+- codex MCPサーバが利用可能な場合、より高品質なレビューが可能
+
+---
+
+## 🔧 MCP サーバー設定
+
+このプラグインはCodex MCPサーバを使用します。設定は`.claude/config.mdcp`に含まれています。
+
+```json
+{
+  "mcpServers": {
+    "codex": {
+      "type": "stdio",
+      "command": "codex",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+### 前提条件
+- `codex`コマンドがインストール済みであること
+- インストール方法: [Codex公式ドキュメント](https://docs.codexmcp.dev/)
 
 ---
 
 ## 📁 ファイル構成
 
 ```
-claude-plugin-template/
+claude-coding-assistant/
+├── .claude/
+│   └── config.mdcp          # MCP サーバー設定
 ├── .claude-plugin/
 │   ├── plugin.json          # プラグイン設定
 │   └── marketplace.json     # マーケットプレイス設定
 ├── commands/
-│   └── hello.md             # /hello コマンド定義
+│   └── code-reviewer.md     # コードレビューコマンド定義
 ├── README.md
 └── LICENSE
 ```
+
+---
+
+## 🎯 レビュー観点
+
+- **機能性**: 実装が要件を満たしているか
+- **可読性**: コードが理解しやすいか、命名は適切か
+- **保守性**: 将来の変更に対して柔軟性があるか
+- **パフォーマンス**: 効率的な実装になっているか
+- **セキュリティ**: セキュリティリスクはないか
+- **テスト**: 適切なテストが含まれているか
+- **ドキュメント**: 必要な文書化がされているか
 
 ---
 

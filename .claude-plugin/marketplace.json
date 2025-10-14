@@ -1,11 +1,11 @@
 {
-  "name": "claude-plugin-template",
+  "name": "claude-coding-assistant",
   "owner": { "name": "karaage0703" },
   "plugins": [
     {
-      "name": "hello-plugin",
+      "name": "coding-assistant",
       "source": "./",
-      "description": "挨拶コマンドを含むスタータープラグイン"
+      "description": "コードレビュー機能を含むコーディングアシスタントプラグイン"
     }
   ]
 }

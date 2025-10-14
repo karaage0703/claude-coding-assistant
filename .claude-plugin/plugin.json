@@ -1,6 +1,6 @@
 {
-  "name": "hello-plugin",
-  "description": "挨拶コマンドを含むスタータープラグイン",
+  "name": "coding-assistant",
+  "description": "コードレビュー機能を含むコーディングアシスタントプラグイン",
   "version": "1.0.0",
   "author": {
     "name": "からあげ",
