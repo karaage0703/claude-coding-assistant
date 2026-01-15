@@ -14,12 +14,12 @@ Claude Codeでコードレビューを自動化するプラグインです。
 
 ### 1. マーケットプレイスを追加
 ```
-/plugin marketplace add https://github.com/karaage0703/claude-coding-assistant 
+/plugin marketplace add https://github.com/emuemuJP/claude-coding-assistant 
 ```
 
 ### 2. プラグインをインストール
 ```
-/plugin install coding-assistant@karaage0703/claude-coding-assistant
+/plugin install coding-assistant@emuemuJP/claude-coding-assistant
 ```
 
 ### 3. Claude Code を再起動
