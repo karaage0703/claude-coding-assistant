@@ -62,7 +62,7 @@ Claude Codeでコードレビューを自動化するプラグインです。
     "codex": {
       "type": "stdio",
       "command": "codex",
-      "args": ["mcp"]
+      "args": ["mcp-server"]
     }
   }
 }
